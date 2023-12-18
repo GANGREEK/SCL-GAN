@@ -24,7 +24,7 @@ pip install visdom dominate
 
 ```
 https://github.com/GANGREEK/SCL-GAN.git
-cd 
+cd SCL-GAN
 ```
 
 
