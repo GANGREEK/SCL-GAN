@@ -1,4 +1,33 @@
-# SCL-GAN
+# Spatially-Correlative Lightweight GAN For Thermal to Visible Face Transformation
+to Visible Face Transformation
+
+
+
+We provide the Pytorch implementation of "Spatially-Correlative Lightweight GAN for Thermal
+to Visible Face Transformation". Based on the inherent self-similarity of facial attributes.
+
+## ToDo
+- a simple example 
+
+## Getting Started
+
+### Installation
+This code was tested with Pytorch 1.7.0, CUDA 10.2, and Python 3.7
+
+- Install Pytoch 1.7.0, torchvision, and other dependencies from [http://pytorch.org](http://pytorch.org)
+- Install python libraries [visdom](https://github.com/facebookresearch/visdom) and [dominate](https://github.com/Knio/dominate) for visualization
+
+```
+pip install visdom dominate
+```
+- Clone this repo:
+
+```
+
+cd 
+```
+
+
 An sample Code For SCL-GAN paper
 
 Required Library
