@@ -28,10 +28,7 @@ cd SCL-GAN
 ```
 
 
-An sample Code For SCL-GAN paper
-
-Required Library
-For the Jetson Deployment Necessary Files and Steps: 
+## Required Library For the Jetson Deployment Necessary Files and Steps: 
 
 Step 1: Configure the Jeston-TX2 Board by using Jetpack over the SDK manager.
 
