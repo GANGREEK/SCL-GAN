@@ -24,8 +24,8 @@ pip install visdom dominate
 - Clone this repo:
 
 ```
-git clone https://github.com/lyndonzheng/F-LSeSim
-cd F-LSeSim
+
+cd 
 ```
 
 
