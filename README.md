@@ -2,7 +2,8 @@
 An sample Code For SCL-GAN paper
 
 Required Library
-Jetson Deployment Necessary Files and Steps:
+Jetson Deployment Necessary Files and Steps: \\
+
 Step 1: Configure the Jeston-TX2 Board by using Jetpack over the SDK manager.
 Step 2: Install PyTorch for the Jetson Borad by using the link https://github.com/Qengineering/PyTorch-Jetson-Nano.
 Step 3: Install the packages :
