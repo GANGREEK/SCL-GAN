@@ -1,5 +1,5 @@
 # Spatially-Correlative Lightweight GAN For Thermal to Visible Face Transformation
-to Visible Face Transformation
+
 
 
 
