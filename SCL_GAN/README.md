@@ -75,7 +75,7 @@ Download the pre-trained models (will be released soon) using the following link
 )
 
 ## Citation
-Submitted in In Reputed Journal Of IEEE Transactions (Will update Soon after good news)
+Submitted in In Reputed Conference ICIP 2025 (Will update Soon after good news)
 ```
 
 ```
