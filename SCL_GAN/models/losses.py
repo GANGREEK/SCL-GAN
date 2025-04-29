@@ -5,7 +5,6 @@ import torchvision.models as models
 import numpy as np
 from .cyclegan_networks import init_net
 
-
 class GANLoss(nn.Module):
     """Define different GAN objectives.
 
@@ -409,31 +408,49 @@ class ContentLoss:
 	def get_loss(self, fakeIm, realIm):
 		return self.criterion(fakeIm, realIm)
 
-class PerceptualLoss2():
-	
-	def contentFunc(self):
-		conv_3_3_layer = 14
-		cnn = models.vgg19(pretrained=True).features
-		cnn = cnn.cuda()
-		model = nn.Sequential()
-		model = model.cuda()
-		for i,layer in enumerate(list(cnn)):
-			model.add_module(str(i),layer)
-			if i == conv_3_3_layer:
-				break
-		return model
-		
-	def __init__(self):
-		self.criterion = nn.HingeEmbeddingLoss()#TripletLoss()
-		self.contentFunc = self.contentFunc()
-			
-	def get_loss(self, realIm, fakeIm, realIm2):
-	    
-		f_fake = self.contentFunc.forward(fakeIm)
-		f_real1 = self.contentFunc.forward(realIm)
-		f_real2 = self.contentFunc.forward(realIm2)
-		loss = self.criterion(f_real1, f_fake)
-		return loss
+
+class PerceptualLoss2(nn.Module):
+    def __init__(self, alpha=0.5):
+        super(PerceptualLoss2, self).__init__()
+        self.alpha = alpha
+        self.contentFunc = self.build_vgg()
+
+    def build_vgg(self):
+        conv_3_3_layer = 14
+        cnn = models.vgg19(pretrained=True).features
+        cnn = cnn.cuda()
+        model = nn.Sequential()
+        model = model.cuda()
+        for i, layer in enumerate(list(cnn)):
+            model.add_module(str(i), layer)
+            if i == conv_3_3_layer:
+                break
+        return model
+
+    def cosine_similarity(self, x1, x2):
+        # Flatten
+        x1 = x1.view(x1.size(0), -1)
+        x2 = x2.view(x2.size(0), -1)
+        # Cosine similarity manually
+        dot_product = (x1 * x2).sum(dim=1)
+        norm_x1 = torch.sqrt((x1 ** 2).sum(dim=1) + 1e-8)
+        norm_x2 = torch.sqrt((x2 ** 2).sum(dim=1) + 1e-8)
+        cos_sim = dot_product / (norm_x1 * norm_x2)
+        return cos_sim
+
+    def forward(self, realIm, fakeIm, realIm2):
+        f_fake = self.contentFunc(fakeIm)
+        f_real1 = self.contentFunc(realIm)
+        f_real2 = self.contentFunc(realIm2)
+        
+        # Compute cosine similarities
+        sim_real_fake = self.cosine_similarity(f_real1, f_fake)
+        sim_real_input = self.cosine_similarity(f_real1, f_real2)
+        
+        # Final loss
+        loss = (sim_real_fake - sim_real_input + self.alpha).mean()
+        return loss
+
 class VGG16(nn.Module):
     def __init__(self):
         super(VGG16, self).__init__()
