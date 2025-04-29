@@ -1,6 +1,6 @@
 set -ex
 python test.py \
---dataroot ./datasets/facades
---checkpoints_dir ./checkpoints --name facades \
+--dataroot ./datasets/WHU 
+--checkpoints_dir ./checkpoints --name WHU22 \
 --model sc \
---num_test 0
+
