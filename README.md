@@ -73,13 +73,12 @@ sh ./scripts/test_fid.sh
 Download the pre-trained models (will be released soon) using the following links and put them under```checkpoints/``` directory.
 
 )
-
+```
 ## Citation
 Submitted in In ICIP-2025(Will update Soon after good news)
 ```
 
 ```
-
 ## Acknowledge
 Our code is developed based on [CUT](https://github.com/taesungp/contrastive-unpaired-translation) and [CycleGAN](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix). We also thank [pytorch-fid](https://github.com/mseitzer/pytorch-fid) for FID computation,  [LPIPS](https://github.com/richzhang/PerceptualSimilarity) for diversity score.
 
