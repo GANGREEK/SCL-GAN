@@ -81,7 +81,7 @@ class SCModel(BaseModel):
             self.criterionSpatial = losses.SpatialCorrelativeLoss(opt.loss_mode, opt.patch_nums, opt.patch_size, opt.use_norm,
                                     opt.learned_attn, gpu_ids=self.gpu_ids, T=opt.T).to(self.device)
             self.normalization = losses.Normalization(self.device)
-            self.Triplet = losses.PerceptualLoss2()
+            self.Triplet = losses.PerceptualLoss2(alpha=0.5)
             # define the contrastive loss
             if opt.learned_attn:
                 self.netF = self.criterionSpatial
