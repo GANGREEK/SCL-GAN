@@ -6,8 +6,7 @@
 We provide the Pytorch implementation of "Spatially-Correlative Lightweight GAN for Thermal
 to Visible Face Transformation". Based on the inherent self-similarity of facial attributes.
 
-## ToDo
-- a simple example 
+ 
 
 ## Getting Started
 
